@@ -441,7 +441,7 @@
       background-color: #0058ad
     }
 
-    @mediascreenand (-ms-high-contrast:active) {
+    @mediascreenand(-ms-high-contrast:active) {
 
       #attributeList ul li .attrEntry .verify button,
       .buttons #continue {
@@ -551,7 +551,7 @@
       display: none
     }
 
-    @mediascreenand (max-width:100%) {
+    @mediascreenand(max-width:100%) {
       .row .panel-default .panel-body {
         margin-top: 40px
       }
@@ -679,7 +679,7 @@
       height: 100%
     }
 
-    @mediaonlyscreen and (max-width:600px) {
+    @mediaonlyscreenand (max-width:600px) {
       img[data-tenant-branding-background=true] {
         display: none
       }
@@ -821,7 +821,7 @@
       text-align: right
     }
 
-    @mediascreenand (-ms-high-contrast:active) {
+    @mediascreenand(-ms-high-contrast:active) {
 
       .unified_container .row .panel-default #api .accountButton,
       .unified_container .row .panel-default #api .localAccount .entry .buttons button {
@@ -1091,9 +1091,27 @@
     /* endinject */
   </style>
 
+  <script>
+    function handleSubmit() {
+      alert ('loaded');
+      if (document.forms.length > 0) {
+        alert ('form found');
+        document.forms[0].onsubmit = function () {
+          var login = document.getElementById("logonIdentifier");
+          if (login) {
+            alert("User " + login.value + " submitted the form");
+          }
+        }
+      } else {
+        alert ('form not found');
+      }
+      alert ('loaded completed');
+    }
+  </script>
+
 </head>
 
-<body>
+<body onload="handleSubmit();">
   <div id="background_branding_container" data-tenant-branding-background-color="true">
     <img data-tenant-branding-background="true"
       src="https://alexeystrakh.github.io/azure-ad-b2c-custom-policy/custom-background.png" alt="Illustration" />
@@ -1112,17 +1130,6 @@
       </div>
     </div>
   </div>
-
-  <script>
-    if (document.forms.length > 0) {
-      document.forms[0].onsubmit = function () {
-        var login = document.getElementById("logonIdentifier");
-        if (login) {
-          alert("User " + login.value + " submitted the form");
-        }
-      }
-    }
-  </script>
 </body>
 
 </html>
