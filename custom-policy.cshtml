@@ -1092,9 +1092,9 @@
   </style>
 
   <script>
-    function handleSubmit() {
-      //alert ('[POLICY] handleSubmit');
-      console.log("[POLICY] handleSubmit!");
+    function onLoaded() {
+      //alert ('[POLICY] onLoaded');
+      console.log("[POLICY] onLoaded!");
       if (document.forms.length > 0) {
         alert('form found');
         document.forms[0].onsubmit = function () {
@@ -1106,35 +1106,29 @@
       } else {
         alert('form not found');
       }
-      alert('handleSubmit completed');
+
+      $('#forgotPassword').html('Reset My Password');
+      $("#forgotPassword").click(function (e) {
+        console.log("[POLICY] forgotPassword clicked!");
+        e.preventDefault();
+        var oldUrl = window.location.href;
+        var newUrl = oldUrl.replace('B2C_1_alstrakh-signinsignup-userflow', 'B2C_1_alstrakh-forgot-password');
+        window.location.href = newUrl;
+      });
+
+      console.log("[POLICY] onLoaded completed");
     }
   </script>
 
   <script>
     $(function () {
-      console.log("[POLICY] ready!");
-      //Change Forget Password Text
-      $('#forgotPassword').html('Reset My Password');
-
-
-      //Handle Forget password click  (fixing ADB2C error)
-      $("#forgotPassword").click(function (e) {
-        e.preventDefault();
-
-
-        var oldUrl = window.location.href;
-        var newUrl = oldUrl.replace('B2C_1_alstrakh-signinsignup-userflow', 'B2C_1_alstrakh-forgot-password');
-
-        window.location.href = newUrl;
-
-      });
-
+      console.log("[POLICY] script executed!");
     });
   </script>
 
 </head>
 
-<body onload="handleSubmit();">
+<body onload="onLoaded();">
   <div id="background_branding_container" data-tenant-branding-background-color="true">
     <img data-tenant-branding-background="true"
       src="https://alexeystrakh.github.io/azure-ad-b2c-custom-policy/custom-background.png" alt="Illustration" />
@@ -1144,7 +1138,7 @@
       <div class="col-lg-6">
         <div class="panel panel-default">
           <div class="panel-body">
-            <div>Customized Template v2</div>
+            <div>Customized Template v3</div>
             <img class="companyLogo" data-tenant-branding-logo="true"
               src="https://alexeystrakh.github.io/azure-ad-b2c-custom-policy/custom-logo.png" alt="Custom Logo">
             <div id="api">
