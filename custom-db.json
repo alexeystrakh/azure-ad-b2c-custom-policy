@@ -1,0 +1,14 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "Alexey",
+        "title": "SDE",
+        "email": "a@b.com",
+        "last-login": "last-login-time-2"
+      }
+    ],
+    "profile": {
+      "last-login": "last-login-time-2"
+    }
+  }
